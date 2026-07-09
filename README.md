@@ -95,3 +95,5 @@ correctness (including the overlapping-shard case), idempotent PR
 comment create/update, the full fail-loud validation matrix, and an
 end-to-end test against a real local HTTP server standing in for the
 GitHub API.
+
+<!-- live dogfood test 2026-07-09T17:59:50.6151584+01:00 -->
