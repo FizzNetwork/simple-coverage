@@ -1,0 +1,33 @@
+name: Self Coverage
+# Dogfooding: this workflow runs simple-coverage ON simple-coverage's own
+# smoke test, using the action against itself (uses: ./) rather than a
+# published version. This is the real first live-PR test both README caveats
+# call out as not yet done.
+on:
+  pull_request:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate real lcov from the smoke test
+        run: |
+          mkdir -p coverage
+          node --test --experimental-test-coverage \
+            --test-reporter=lcov --test-reporter-destination=coverage/lcov.info \
+            test/coverage-smoke.test.js
+
+      - name: Run the full existing test suite too (must still pass)
+        run: npm test
+
+      - uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          lcov: coverage/lcov.info
+          title: 'simple-coverage — self coverage'

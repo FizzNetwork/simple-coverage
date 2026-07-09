@@ -1,0 +1,10 @@
+{
+  "name": "simple-coverage",
+  "version": "1.0.0",
+  "description": "Language-agnostic GitHub coverage-reporting action via lcov. Zero dependencies.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test/round1.test.js && node test/round2.test.js && node test/round3.test.js && node test/round4.test.js && node test/round6.test.js && node test/e2e.test.js"
+  },
+  "license": "MIT"
+}

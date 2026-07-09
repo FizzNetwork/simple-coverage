@@ -1,0 +1,30 @@
+name: 'Simple Coverage'
+description: 'Post code coverage from any language on your pull requests. Reads the universal lcov format — no per-language lock-in.'
+branding:
+  icon: 'percent'
+  color: 'green'
+inputs:
+  lcov:
+    description: 'Glob pattern(s) for lcov report file(s), one per line. Multiple files are merged correctly (per-line max, not naive summation).'
+    required: true
+  threshold:
+    description: 'Minimum coverage percent required. Fails the run if coverage is below this after posting the comment.'
+    required: false
+  title:
+    description: 'Heading for the posted comment.'
+    required: false
+    default: 'Coverage Report'
+  comment:
+    description: 'Post/update a pull request comment with the results. Must be "true" or "false".'
+    required: false
+    default: 'true'
+outputs:
+  coverage_percent:
+    description: 'Overall line coverage percent.'
+  lines_hit:
+    description: 'Total lines hit across all merged reports.'
+  lines_found:
+    description: 'Total lines found across all merged reports.'
+runs:
+  using: 'node20'
+  main: 'src/index.js'

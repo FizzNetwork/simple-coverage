@@ -1,0 +1,11 @@
+# internal build/planning artifacts — not part of the shipped action
+NOTES.md
+phase-1-scaffold/
+phase-2-lcov-merge/
+phase-3-pr-comment/
+phase-4-fail-loud-threshold/
+phase-5-packaging-docs/
+phase-6-comment-pagination/
+COVERAGE-REVIEW-PROMPT.md
+node_modules/
+coverage/
